@@ -1,0 +1,42 @@
+﻿@*@model IEnumerable<Item>*@
+
+@*@foreach (var i in Model)
+    {
+        <div>
+            <h3>@i.ItemName</h3>
+            @i.ItemDescription
+            <h4>@i.ItemPrice.ToString("c")</h4>
+        </div>
+    }*@
+
+@model ItemListViewModel
+
+@*@foreach (var i in Model.Items)
+{
+    <div>
+        <h3>@i.ItemName</h3>
+        @i.ItemDescription
+        <h4>@i.ItemPrice.ToString("c")</h4>
+    </div>
+}
+
+<div page-model="@Model.PageInfo" page-action="Index"></div>*@
+
+@foreach (var i in Model.Items)
+{
+    <div class="card card-outline-primary m-1 p-1">
+        <div class="bg-faded p-1">
+            <h4>
+                @i.ItemName
+                <span class="badge badge-pill badge-primary" style="float:right">
+                    <small>@i.ItemPrice.ToString("c")</small>
+                </span>
+            </h4>
+        </div>
+        <div class="card-text p-1">@i.ItemDescription</div>
+    </div>
+}
+<div page-model="@Model.PageInfo" page-action="Index" page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-secondary"
+     page-class-selected="btn-primary" class="btn-group pull-right m-1">
+</div>
