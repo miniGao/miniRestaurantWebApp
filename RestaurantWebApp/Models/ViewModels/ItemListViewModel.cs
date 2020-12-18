@@ -9,5 +9,6 @@ namespace RestaurantWebApp.Models.ViewModels
     {
         public IEnumerable<Item> Items { get; set; }
         public ItemPerPage PageInfo { get; set; }
+        public string CurrentCategory { get; set; }
     }
 }

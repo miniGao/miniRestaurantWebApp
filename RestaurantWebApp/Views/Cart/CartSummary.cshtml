@@ -1,0 +1,37 @@
+﻿@model CartSummaryViewModel
+
+<h2>Cart Summary</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Quantity</th>
+            <th>Item</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var record in Model.Cart.Records)
+        {
+            <tr>
+                <td class="text-center">@record.Quantity</td>
+                <td class="text-left">@record.Item.ItemName</td>
+                <td class="text-right">@record.Item.ItemPrice.ToString("c")</td>
+                <td class="text-right">
+                    @((record.Quantity * record.Item.ItemPrice).ToString("c"))
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total:</td>
+            <td class="text-right">
+                @Model.Cart.GetTotalPrice().ToString("c")
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue shopping</a>
+</div>

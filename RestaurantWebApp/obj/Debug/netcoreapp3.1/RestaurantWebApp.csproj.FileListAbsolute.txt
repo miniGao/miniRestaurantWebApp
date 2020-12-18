@@ -165,3 +165,6 @@ E:\Workspace\.net-workspace\RestaurantWebApp\RestaurantWebApp\obj\Debug\netcorea
 E:\Workspace\.net-workspace\RestaurantWebApp\RestaurantWebApp\obj\Debug\netcoreapp3.1\RestaurantWebApp.pdb
 E:\Workspace\.net-workspace\RestaurantWebApp\RestaurantWebApp\obj\Debug\netcoreapp3.1\RestaurantWebApp.genruntimeconfig.cache
 E:\Workspace\.net-workspace\RestaurantWebApp\RestaurantWebApp\obj\Debug\netcoreapp3.1\RestaurantWebApp.csprojAssemblyReference.cache
+E:\Workspace\.net-workspace\RestaurantWebApp\RestaurantWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ItemSummary.cshtml.g.cs
+E:\Workspace\.net-workspace\RestaurantWebApp\RestaurantWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\NavMenu\Default.cshtml.g.cs
+E:\Workspace\.net-workspace\RestaurantWebApp\RestaurantWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Cart\CartSummary.cshtml.g.cs

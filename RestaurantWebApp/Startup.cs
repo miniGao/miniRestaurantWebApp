@@ -35,6 +35,10 @@ namespace RestaurantWebApp
             //services.AddTransient<IItemRepository, TestItemRepository>();
             services.AddTransient<IItemRepository, ItemRepository>();
             services.AddMvc(options => options.EnableEndpointRouting = false);
+
+            // enable session for shopping cart
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,15 +51,38 @@ namespace RestaurantWebApp
 
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            // use session service
+            app.UseSession();
             app.UseMvc(routes =>
             {
+                // include category
+                routes.MapRoute(
+                    name: "addcategory",
+                    template: "{category}/Page{itemPage}",
+                    defaults: new { controller = "Item", action = "Index" }
+                    );
+
                 // improve url
                 routes.MapRoute(
                     name: "improvepageurl",
-                    template: "Items/Page{itemPage}",
+                    template: "Page{itemPage}",
                     defaults: new { Controller = "Item", action = "Index" }
                     );
 
+                //
+                routes.MapRoute(
+                    name: "onlycategory",
+                    template: "{category}",
+                    defaults: new { controller = "Item", action = "Index" }
+                    );
+
+                routes.MapRoute(
+                    name: "empty",
+                    template: "",
+                    defaults: new { controller = "Item", action = "Index" }
+                    );
+
+                // original
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Item}/{action=Index}/{id?}"

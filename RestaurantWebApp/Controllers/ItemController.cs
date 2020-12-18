@@ -18,7 +18,7 @@ namespace RestaurantWebApp.Controllers
             itemRepo = repo;
         }
 
-        public IActionResult Index(int itemPage = 1)
+        public IActionResult Index(string category, int itemPage = 1)
         {
             //// pagination
             //return View(
@@ -30,7 +30,8 @@ namespace RestaurantWebApp.Controllers
             return View(
                 new ItemListViewModel
                 {
-                    Items = itemRepo.Items.OrderBy(i => i.ItemId)
+                    Items = itemRepo.Items.Where(i => category == null || i.ItemCategory == category)
+                    .OrderBy(i => i.ItemId)
                     .Skip((itemPage - 1) * itemPerPage)
                     .Take(itemPerPage),
 
@@ -38,8 +39,10 @@ namespace RestaurantWebApp.Controllers
                     {
                         CurrentPage = itemPage,
                         ItemsPerPage = itemPerPage,
-                        TotalItems = itemRepo.Items.Count()
-                    }
+                        TotalItems = (category == null) ? itemRepo.Items.Count() : itemRepo.Items.Where(i => i.ItemCategory == category).Count()
+                    },
+
+                    CurrentCategory = category
                 }
                 );
         }
